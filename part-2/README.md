@@ -55,3 +55,7 @@ ports:
 ```
 
 Can you find where the port is listed with `kubectl describe pod nginx`?
+
+Bonus points:
+
+Can you figure out how to use `kubectl logs` to get the logs from our pod?
