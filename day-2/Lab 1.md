@@ -1,4 +1,4 @@
-# Part 3
+# Day 2 - Lab 1 (ConfigMap & Secrets)
 
 Up to this point we've deployed the Nginx pod without any further configuration.
 Let's see if we can add some functionality using `ConfigMap` and `Secret`.
@@ -11,6 +11,18 @@ We can break this into three parts:
 
 
 ## Steps
+
+
+### Prep
+
+Before starting, be sure to make sure minikube is running:
+
+```sh
+minikube status
+
+# if needed:
+minikube start
+```
 
 ### ConfigMap
 
@@ -71,10 +83,14 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  labels:
+    app: nginx
 spec:
   containers:
   - image: nginx
     name: nginx
+    ports:
+    - containerPort: 80
 ```
 
 First let's add our special message from the ConfigMap. We'll add it as an environment variable.
@@ -84,10 +100,14 @@ First let's add our special message from the ConfigMap. We'll add it as an envir
   kind: Pod
   metadata:
     name: nginx
+    labels:
+      app: nginx
   spec:
     containers:
     - image: nginx
       name: nginx
+      ports:
+      - containerPort: 80
 +     env:
 +     - name: MESSAGE
 +       valueFrom:
@@ -103,10 +123,14 @@ Next we'll make our pod aware of the ConfigMap and Secret so we can mount them:
   kind: Pod
   metadata:
     name: nginx
+    labels:
+      app: nginx
   spec:
     containers:
     - image: nginx
       name: nginx
+      ports:
+      - containerPort: 80
       env:
       - name: MESSAGE
         valueFrom:
@@ -130,10 +154,14 @@ Finally, we'll mount our files to the places they belong. You'll notice `subPath
   kind: Pod
   metadata:
     name: nginx
+    labels:
+      app: nginx
   spec:
     containers:
     - image: nginx
       name: nginx
+      ports:
+      - containerPort: 80
       env:
       - name: MESSAGE
         valueFrom:
@@ -165,10 +193,14 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  labels:
+    app: nginx
 spec:
   containers:
   - image: nginx
     name: nginx
+    ports:
+    - containerPort: 80
     env:
     - name: MESSAGE
       valueFrom:
