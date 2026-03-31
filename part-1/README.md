@@ -1,5 +1,10 @@
 # Part 1
 
+Ensure minikube is running with:
+```sh
+minikube start
+```
+
 
 Use the following to create an Nginx container:
 ```sh
