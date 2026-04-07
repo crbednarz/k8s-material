@@ -45,7 +45,7 @@ We can also make a request against the API server directly:
 kubectl proxy --port=8001
 ```
 
-Then browse to http://localhost/api/v1/namespaces/kube-system/pods
+Then browse to http://localhost:8001/api/v1/namespaces/kube-system/pods
 
 
 ### Kubelet
