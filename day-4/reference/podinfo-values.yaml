@@ -1,0 +1,3 @@
+ui:
+  message: Hello Kubernetes!
+  color: "#BCA4E3" # How about purple this time?
