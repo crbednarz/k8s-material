@@ -146,6 +146,12 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
+And then apply it with:
+
+```sh
+kubectl apply -f role-binding.yaml
+```
+
 We can verify it as well:
 
 ```sh
